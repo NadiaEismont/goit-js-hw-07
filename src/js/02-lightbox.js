@@ -1,7 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-let lightbox = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
 
 
 const refs = {
@@ -10,32 +9,39 @@ const refs = {
 }
 
 function createGallery() {
-    return galleryItems.map(({ preview, original, description }) => (`<a class="gallery__item" href="${original}">
+    return galleryItems.map(({ preview, original, description }) =>
+    (`<a class="gallery__item" href="${original}">
   <img class="gallery__image" src="${preview}" alt="${description}" />
 </a>`)).join('');
 }
 refs.gallery.insertAdjacentHTML('afterbegin', createGallery())
 
-function onOpenModal(e) {
-    e.preventDefault()
-    lightbox.open();
-    if (e.currentTarget === e.target) {
-        return;
-    }
-    document.addEventListener('keydown', onEscKeyPress);
-}
+let lightbox = new SimpleLightbox('.gallery__item', {
+    captionsData: "alt",
+    captionDelay: 250
+});
 
-function onModalClose(e) {
-    lightbox.close();
-    document.removeEventListener('keydown', onEscKeyPress);
 
-}
+// function onOpenModal(e) {
+//     e.preventDefault()
+//     lightbox.open();
+//     if (e.currentTarget === e.target) {
+//         return;
+//     }
+//     document.addEventListener('keydown', onEscKeyPress);
+// }
 
-function onEscKeyPress(e) {
-    if (e.code === 'Escape') {
-        onModalClose();
-    }
-}
+// function onModalClose(e) {
+//     lightbox.close();
+//     document.removeEventListener('keydown', onEscKeyPress);
+
+// }
+
+// function onEscKeyPress(e) {
+//     if (e.code === 'Escape') {
+//         onModalClose();
+//     }
+// }
 
 
 

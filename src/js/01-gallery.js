@@ -51,4 +51,4 @@ function onEscKeyPress(e) {
 
 refs.modal.addEventListener('click', onModalClose);
 refs.gallery.addEventListener('click', onOpenModal);
-console.log(galleryItems);
+
